@@ -1,4 +1,3 @@
-
 hacktool = {}
 
 -- Are the optional dependencies enabled?
@@ -60,6 +59,7 @@ end
 -- Generate a formspec for the given inventory positioned at X, y
 local function inventory_formspec(name, inv, X, y)
 	if not y then y = 0 end
+	if not X then X = 0 end
 	local x = X
 	local formspec = ""
 	local size = inv:get_size(name)
@@ -173,7 +173,7 @@ minetest.register_on_player_receive_fields(function(user, form, pressed)
 		user_inventory:set_stack("main", empty_slot, stack)
 		-- Remove the item from the target player's inventory
 		target_inventory:set_stack(inventory_name, stack_index, nil)
-		-- Trigger formspec reload- see below
+		-- Trigger formspec reload - see below
 		selected_inventory = inventory_name
 	end
 
